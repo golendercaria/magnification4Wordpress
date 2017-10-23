@@ -24,7 +24,7 @@ class magnification4Wordpress{
 	
 	public function magnification4Wordpress_script(){
 		
-		//get option
+		//get options
 		$this->options = get_option( 'm4w_options' );
 
 		wp_register_script( 'magnification4Wordpress-js', plugin_dir_url( __FILE__ ) . '/js/m4w.js', array('jquery'), "1.0", true);	
@@ -116,8 +116,12 @@ class magnification4Wordpress{
     }
     
     public function magnification4Wordpress_html_ouput(){
+	    
+		//get options
+		$this->options = get_option( 'm4w_options' );
+	    
 	    ?>
-		 <div id="accessibility">
+		 <div id="<?php echo $this->options["m4w_container_id"]; ?>">
 			 <ul>
 				 <li>
 				 	<a href="#" class="macro" data-action="zoomout">A<sup>-</sup></a>
