@@ -25,6 +25,3 @@
 	$("#" + m4w_target_id + " a").m4w();
 	
 })(jQuery);
-
-
-//$("#accessibility a").zoomer();
