@@ -1,7 +1,7 @@
 (function($){
-	
+
 	$.fn.m4w = function(){
-		var zoomFactor 	= 1.1;
+		var zoomFactor 	= m4w_zoom_factor[0];
 		var defautFontSize = parseInt( $("html").css("font-size") );
 		var currentZoom = defautFontSize;
 		
@@ -22,6 +22,6 @@
 		return this;
 	}
 	
-	$("#" + m4w_target_id + " a").m4w();
+	$("#" + m4w_container_id + " a").m4w();
 	
 })(jQuery);

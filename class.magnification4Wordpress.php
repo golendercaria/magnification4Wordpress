@@ -28,7 +28,8 @@ class magnification4Wordpress{
 		$this->options = get_option( 'm4w_options' );
 
 		wp_register_script( 'magnification4Wordpress-js', plugin_dir_url( __FILE__ ) . '/js/m4w.js', array('jquery'), "1.0", true);	
-		wp_localize_script( 'magnification4Wordpress-js', 'm4w_target_id', $this->options['m4w_container_id']);
+		wp_localize_script( 'magnification4Wordpress-js', 'm4w_container_id', $this->options['m4w_container_id']);
+		wp_localize_script( 'magnification4Wordpress-js', 'm4w_zoom_factor', array($this->options['m4w_zoom_factor']));
 		wp_enqueue_script( 'magnification4Wordpress-js' );
 	}
 	
