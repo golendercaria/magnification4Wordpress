@@ -10,11 +10,26 @@ class magnification4Wordpress{
 		//add menu page
 		add_action( 'admin_menu', array( $this, 'admin_menu_page' ) );
         add_action( 'admin_init', array( $this, 'magnification4Wordpress_settings' ) );
+		add_action( 'wp_footer', array( $this, 'magnification4Wordpress_html_ouput') );
 		
+		//enqueue script
+		add_action( 'wp_enqueue_scripts', array( $this, 'magnification4Wordpress_script'), 0 );
+		
+
 	}
 	
 	public function admin_menu_page(){
 		add_menu_page( $this->menuPageTitle, $this->menuPageLabel, 'manage_options', get_class($this), array($this,'magnification4Wordpress_options_page'), 'dashicons-admin-tools', 100 );
+	}
+	
+	public function magnification4Wordpress_script(){
+		
+		//get option
+		$this->options = get_option( 'm4w_options' );
+
+		wp_register_script( 'magnification4Wordpress-js', plugin_dir_url( __FILE__ ) . '/js/m4w.js', array('jquery'), "1.0", true);	
+		wp_localize_script( 'magnification4Wordpress-js', 'm4w_target_id', $this->options['m4w_container_id']);
+		wp_enqueue_script( 'magnification4Wordpress-js' );
 	}
 	
 	public function magnification4Wordpress_settings(){
@@ -69,7 +84,6 @@ class magnification4Wordpress{
 		<div class="wrap">
 			<h1><?php echo $this->menuPageTitle; ?></h1>
 			<?php
-	        	// Set class property
 				$this->options = get_option( 'm4w_options' );
 	        ?>
 	        <div class="wrap">
@@ -99,7 +113,24 @@ class magnification4Wordpress{
             isset( $this->options['m4w_zoom_factor'] ) ? esc_attr( $this->options['m4w_zoom_factor']) : ''
         );
     }
+    
+    public function magnification4Wordpress_html_ouput(){
+	    ?>
+		 <div id="accessibility">
+			 <ul>
+				 <li>
+				 	<a href="#" class="macro" data-action="zoomout">A<sup>-</sup></a>
+				 </li>
+				 <li>
+				 	<a href="#" class="normal" data-action="normal">A</a>
+				 </li>
+				 <li>
+				 	<a href="#" class="zoom" data-action="zoom">A<sup>+</sup></a>
+				 </li>
+			 </ul>
+		 </div>
+	    <?php
+    }
 
-	
-	
+
 }
