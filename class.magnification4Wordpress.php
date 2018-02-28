@@ -124,13 +124,13 @@ class magnification4Wordpress{
 		 <div id="<?php echo $this->options["m4w_container_id"]; ?>">
 			 <ul>
 				 <li>
-				 	<a href="#" class="macro" data-action="zoom">A<sup>+</sup></a>
+				 	<a href="#" class="zoom" data-action="zoom">A<sup>+</sup></a>
 				 </li>
 				 <li>
 				 	<a href="#" class="normal" data-action="normal">A</a>
 				 </li>
 				 <li>
-				 	<a href="#" class="zoom" data-action="zoomout">A<sup>-</sup></a>
+				 	<a href="#" class="macro" data-action="zoomout">A<sup>-</sup></a>
 				 </li>
 			 </ul>
 		 </div>
