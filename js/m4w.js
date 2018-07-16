@@ -6,7 +6,9 @@
 		var currentZoom = defautFontSize;
 		
 		this.click(function(e){
-
+			
+			$("#" + m4w_container_id + " a").removeClass("disable");
+			
 			var data = $(this).data("action");
 			if( data == "zoomout" ){
 				currentZoom = parseFloat( currentZoom ) / zoomFactor;
@@ -15,7 +17,6 @@
 					$(e.currentTarget).addClass("disable");
 				}else{
 					$("html").css("font-size", currentZoom + "px");
-					$(e.currentTarget).removeClass("disable");
 				}
 			}else if( data == "normal" ){
 				currentZoom = defautFontSize;
@@ -27,7 +28,6 @@
 					$(e.currentTarget).addClass("disable");
 				}else{
 					$("html").css("font-size", currentZoom + "px");
-					$(e.currentTarget).removeClass("disable");
 				}
 			}
 		});
