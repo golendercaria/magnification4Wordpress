@@ -6,16 +6,29 @@
 		var currentZoom = defautFontSize;
 		
 		this.click(function(e){
+
 			var data = $(this).data("action");
 			if( data == "zoomout" ){
 				currentZoom = parseFloat( currentZoom ) / zoomFactor;
-				$("html").css("font-size", currentZoom + "px");
+				//limitation
+				if( defautFontSize/2 > currentZoom ){
+					$(e.currentTarget).addClass("disable");
+				}else{
+					$("html").css("font-size", currentZoom + "px");
+					$(e.currentTarget).removeClass("disable");
+				}
 			}else if( data == "normal" ){
 				currentZoom = defautFontSize;
 				$("html").css("font-size", defautFontSize + "px" );
 			}else if( data == "zoom" ){
 				currentZoom = parseFloat( currentZoom ) * zoomFactor;
-				$("html").css("font-size", currentZoom + "px");
+				//limitation
+				if( defautFontSize*2 < currentZoom ){
+					$(e.currentTarget).addClass("disable");
+				}else{
+					$("html").css("font-size", currentZoom + "px");
+					$(e.currentTarget).removeClass("disable");
+				}
 			}
 		});
 		
