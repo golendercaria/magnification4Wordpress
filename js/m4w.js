@@ -11,22 +11,22 @@
 			
 			var data = $(this).data("action");
 			if( data == "zoomout" ){
-				currentZoom = parseFloat( currentZoom ) / zoomFactor;
 				//limitation
 				if( defautFontSize/2 > currentZoom ){
 					$(e.currentTarget).addClass("disable");
 				}else{
+					currentZoom = parseFloat( currentZoom ) / zoomFactor;
 					$("html").css("font-size", currentZoom + "px");
 				}
 			}else if( data == "normal" ){
 				currentZoom = defautFontSize;
 				$("html").css("font-size", defautFontSize + "px" );
 			}else if( data == "zoom" ){
-				currentZoom = parseFloat( currentZoom ) * zoomFactor;
 				//limitation
 				if( defautFontSize*2 < currentZoom ){
 					$(e.currentTarget).addClass("disable");
 				}else{
+					currentZoom = parseFloat( currentZoom ) * zoomFactor;
 					$("html").css("font-size", currentZoom + "px");
 				}
 			}
