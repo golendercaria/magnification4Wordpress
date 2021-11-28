@@ -1,6 +1,8 @@
 # magnification4Wordpress
 Visually impaired support plugin for Wordpress
 
+Detail of explanation here : https://nouslesdevs.com/php/text2speech/
+
 Documentation
 =============
 
